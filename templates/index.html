@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1 class="hero-title">
+Plataforma Inteligente de Gestión Ganadera
+</h1>
+
+<p class="hero-subtitle">
+
+Este proyecto forma parte de mi portafolio profesional y busca demostrar
+cómo la tecnología puede mejorar la gestión productiva en fincas ganaderas.
+
+Actualmente es un prototipo funcional que permite registrar animales,
+gestionar información básica y explorar el uso de software aplicado al agro.
+
+</p>
+
+<div class="hero-buttons">
+
+{% if usuario_logueado %}
+
+<a href="/dashboard">
+<button class="btn-primary">Ir al Dashboard</button>
+</a>
+
+{% else %}
+
+<a href="/login">
+<button class="btn-primary">Iniciar sesión</button>
+</a>
+
+<a href="/registro">
+<button class="btn-secondary">Crear cuenta</button>
+</a>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="features">
+
+<div class="feature-card">
+
+<h3>Registro Digital de Animales</h3>
+
+<p>
+Permite registrar cada animal de la finca con información básica
+como identificación, raza, sexo y fecha de nacimiento.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<h3>Seguimiento Productivo</h3>
+
+<p>
+La plataforma está diseñada para evolucionar hacia sistemas de
+seguimiento productivo que permitan analizar crecimiento y rendimiento.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<h3>Tecnología para el Agro</h3>
+
+<p>
+Este proyecto explora el desarrollo de soluciones tecnológicas
+para el sector agropecuario utilizando herramientas modernas.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<h3>Proyecto Escalable</h3>
+
+<p>
+El objetivo final es evolucionar esta plataforma hacia una solución
+más completa desplegada en la nube para productores ganaderos.
+</p>
+
+</div>
+
+</section>
+
+{% endblock %}

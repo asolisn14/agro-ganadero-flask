@@ -1,0 +1,452 @@
+/* =========================
+RESET
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+BODY
+========================= */
+
+body{
+
+background:linear-gradient(135deg,#0f172a,#1e3a8a,#0f172a);
+min-height:100vh;
+color:white;
+overflow-x:hidden;
+
+}
+
+/* =========================
+CANVAS FONDO
+========================= */
+
+#bg-canvas{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+
+}
+
+/* =========================
+NAVBAR
+========================= */
+
+.navbar{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:20px 40px;
+
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(12px);
+
+border-bottom:1px solid rgba(255,255,255,0.1);
+
+}
+
+.logo{
+
+font-size:22px;
+font-weight:bold;
+color:#4ade80;
+
+}
+
+/* =========================
+MENU
+========================= */
+
+nav a{
+
+color:white;
+text-decoration:none;
+margin-left:25px;
+
+padding:8px 14px;
+
+border-radius:8px;
+
+transition:all .3s;
+
+}
+
+/* hover glow */
+
+nav a:hover{
+
+background:#22c55e;
+transform:translateY(-2px);
+
+box-shadow:
+0 5px 15px rgba(0,255,150,0.5);
+
+}
+
+/* =========================
+MAIN
+========================= */
+
+.main-container{
+
+padding:40px;
+max-width:1200px;
+margin:auto;
+
+}
+
+/* =========================
+HERO LANDING
+========================= */
+
+.hero{
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+
+padding:120px 20px;
+
+}
+
+/* titulo */
+
+.hero-title{
+
+font-size:52px;
+
+background:linear-gradient(90deg,#22c55e,#4ade80,#22c55e);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+margin-bottom:25px;
+
+}
+
+/* subtitulo */
+
+.hero-subtitle{
+
+max-width:750px;
+margin:auto;
+
+font-size:18px;
+line-height:1.6;
+
+opacity:0.85;
+
+margin-bottom:35px;
+
+}
+
+/* botones */
+
+.hero-buttons{
+
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+
+}
+
+/* =========================
+BOTONES HERO
+========================= */
+
+.btn-primary{
+
+font-size:16px;
+padding:14px 28px;
+
+background:linear-gradient(45deg,#22c55e,#4ade80);
+
+border:none;
+border-radius:12px;
+
+color:black;
+font-weight:bold;
+
+cursor:pointer;
+
+transition:all .3s;
+
+box-shadow:
+0 0 15px rgba(34,197,94,0.5);
+
+}
+
+.btn-primary:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+0 10px 30px rgba(34,197,94,0.7);
+
+}
+
+.btn-secondary{
+
+font-size:16px;
+padding:14px 28px;
+
+background:transparent;
+
+border:1px solid rgba(255,255,255,0.3);
+
+border-radius:12px;
+
+color:white;
+
+cursor:pointer;
+
+transition:all .3s;
+
+}
+
+.btn-secondary:hover{
+
+background:rgba(255,255,255,0.1);
+
+transform:translateY(-4px);
+
+}
+
+/* =========================
+TARJETAS
+========================= */
+
+.card{
+
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(12px);
+
+padding:25px;
+
+border-radius:14px;
+
+border:1px solid rgba(255,255,255,0.1);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.5);
+
+margin-bottom:30px;
+
+}
+
+/* =========================
+FEATURE CARDS
+========================= */
+
+.features{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+margin-top:80px;
+
+}
+
+.feature-card{
+
+background:rgba(255,255,255,0.05);
+
+padding:30px;
+
+border-radius:16px;
+
+border:1px solid rgba(255,255,255,0.08);
+
+backdrop-filter:blur(12px);
+
+transition:all .3s;
+
+cursor:pointer;
+
+}
+
+.feature-card:hover{
+
+transform:translateY(-10px) scale(1.03);
+
+box-shadow:
+0 20px 40px rgba(0,0,0,0.6),
+0 0 25px rgba(34,197,94,0.2);
+
+}
+
+.feature-card h3{
+
+margin-bottom:12px;
+color:#4ade80;
+
+}
+
+/* =========================
+TABLA
+========================= */
+
+table{
+
+width:100%;
+border-collapse:collapse;
+
+}
+
+th{
+
+text-align:left;
+padding:12px;
+
+background:rgba(255,255,255,0.1);
+
+}
+
+td{
+
+padding:10px;
+
+border-bottom:1px solid rgba(255,255,255,0.1);
+
+}
+
+/* =========================
+FORM
+========================= */
+
+form{
+
+display:flex;
+flex-direction:column;
+gap:12px;
+
+}
+
+input,select{
+
+padding:10px;
+
+border:none;
+border-radius:8px;
+
+background:rgba(255,255,255,0.1);
+color:white;
+
+outline:none;
+
+}
+
+/* =========================
+BOTONES GENERALES 3D
+========================= */
+
+button{
+
+padding:12px;
+
+border:none;
+
+border-radius:10px;
+
+background:linear-gradient(45deg,#22c55e,#4ade80);
+
+color:black;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:all .25s;
+
+box-shadow:
+0 6px 0 #15803d,
+0 8px 20px rgba(0,0,0,0.6);
+
+}
+
+button:active{
+
+transform:translateY(4px);
+
+box-shadow:
+0 2px 0 #15803d,
+0 4px 10px rgba(0,0,0,0.5);
+
+}
+
+button:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 8px 0 #15803d,
+0 12px 25px rgba(0,0,0,0.6);
+
+}
+
+/* =========================
+LOGIN CARD
+========================= */
+
+.login-card{
+
+max-width:420px;
+margin:auto;
+text-align:center;
+
+}
+
+.login-card h2{
+
+margin-bottom:20px;
+
+}
+
+.extra{
+
+margin-top:15px;
+
+}
+
+.extra a{
+
+color:#4ade80;
+text-decoration:none;
+
+}
+
+.extra a:hover{
+
+text-decoration:underline;
+
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+.hero-title{
+font-size:36px;
+}
+
+.navbar{
+flex-direction:column;
+gap:10px;
+}
+
+}

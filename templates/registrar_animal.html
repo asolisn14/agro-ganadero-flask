@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+
+<h2>Registrar Animal</h2>
+
+<form method="POST">
+
+<input type="text" name="identificacion" placeholder="Identificación" required>
+
+<input type="text" name="raza" placeholder="Raza">
+
+<input type="date" name="fecha_nacimiento">
+
+<select name="sexo">
+
+<option>Macho</option>
+<option>Hembra</option>
+
+</select>
+
+<button type="submit">Guardar Animal</button>
+
+</form>
+
+</div>
+
+{% endblock %}

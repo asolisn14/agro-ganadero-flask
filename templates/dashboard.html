@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card">
+
+<h2>Mis Animales</h2>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Identificación</th>
+<th>Raza</th>
+<th>Acción</th>
+</tr>
+
+{% for animal in animales %}
+
+<tr>
+
+<td>{{animal.id}}</td>
+<td>{{animal.identificacion}}</td>
+<td>{{animal.raza}}</td>
+
+<td>
+
+<a href="/animal/{{animal.id}}">
+<button>Ver perfil</button>
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/registrar_animal">
+<button>Registrar nuevo animal</button>
+</a>
+
+</div>
+
+{% endblock %}
