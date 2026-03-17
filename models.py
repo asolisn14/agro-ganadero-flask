@@ -60,14 +60,13 @@ def crear_usuario(username, password):
     conn.close()
 
 
-def obtener_usuario(username, password):
+def obtener_usuario(username):
     conn = conectar()
     cursor = conn.cursor()
 
     cursor.execute("""
-    SELECT * FROM usuarios
-    WHERE username=? AND password=?
-    """, (username, password))
+    SELECT * FROM usuarios WHERE username=?
+    """, (username,))
 
     user = cursor.fetchone()
     conn.close()
