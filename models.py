@@ -1,23 +1,23 @@
 # models.py
 
-from database import get_connection
+from database import conectar
 
 
 def crear_tablas():
 
-    conn = get_connection()
+    conn = conectar()
     cursor = conn.cursor()
 
-    # usuarios
+    # USUARIOS
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS usuarios (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT UNIQUE,
+        username TEXT,
         password TEXT
     )
     """)
 
-    # animales
+    # ANIMALES
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS animales (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,7 +29,7 @@ def crear_tablas():
     )
     """)
 
-    # pesos
+    # PESOS
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS pesos (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -43,137 +43,105 @@ def crear_tablas():
     conn.close()
 
 
-# ----------------------
+# -------------------
 # USUARIOS
-# ----------------------
+# -------------------
 
 def crear_usuario(username, password):
-
-    conn = get_connection()
+    conn = conectar()
     cursor = conn.cursor()
 
-    try:
-        cursor.execute(
-            "INSERT INTO usuarios (username,password) VALUES (?,?)",
-            (username,password)
-        )
-        conn.commit()
-    except Exception as e:
-        print("ERROR USUARIO:", e)
+    cursor.execute("""
+    INSERT INTO usuarios (username, password)
+    VALUES (?,?)
+    """, (username, password))
 
+    conn.commit()
     conn.close()
 
 
-def obtener_usuario(username):
-
-    conn = get_connection()
+def obtener_usuario(username, password):
+    conn = conectar()
     cursor = conn.cursor()
 
-    cursor.execute(
-        "SELECT * FROM usuarios WHERE username=?",
-        (username,)
-    )
+    cursor.execute("""
+    SELECT * FROM usuarios
+    WHERE username=? AND password=?
+    """, (username, password))
 
     user = cursor.fetchone()
-
     conn.close()
-
     return user
 
 
-# ----------------------
+# -------------------
 # ANIMALES
-# ----------------------
+# -------------------
 
 def registrar_animal(usuario_id, identificacion, raza, fecha_nacimiento, sexo):
-
-    conn = get_connection()
+    conn = conectar()
     cursor = conn.cursor()
 
-    try:
-        cursor.execute("""
-        INSERT INTO animales (usuario_id,identificacion,raza,fecha_nacimiento,sexo)
-        VALUES (?,?,?,?,?)
-        """,(usuario_id,identificacion,raza,fecha_nacimiento,sexo))
+    cursor.execute("""
+    INSERT INTO animales (usuario_id, identificacion, raza, fecha_nacimiento, sexo)
+    VALUES (?,?,?,?,?)
+    """, (usuario_id, identificacion, raza, fecha_nacimiento, sexo))
 
-        conn.commit()
-
-    except Exception as e:
-        print("ERROR ANIMAL:", e)
-
+    conn.commit()
     conn.close()
 
 
 def obtener_animales(usuario_id):
-
-    conn = get_connection()
+    conn = conectar()
     cursor = conn.cursor()
 
-    cursor.execute(
-        "SELECT * FROM animales WHERE usuario_id=?",
-        (usuario_id,)
-    )
+    cursor.execute("""
+    SELECT * FROM animales WHERE usuario_id=?
+    """, (usuario_id,))
 
-    animales = cursor.fetchall()
-
+    data = cursor.fetchall()
     conn.close()
-
-    return animales
+    return data
 
 
 def obtener_animal(id):
-
-    conn = get_connection()
+    conn = conectar()
     cursor = conn.cursor()
 
-    cursor.execute(
-        "SELECT * FROM animales WHERE id=?",
-        (id,)
-    )
+    cursor.execute("""
+    SELECT * FROM animales WHERE id=?
+    """, (id,))
 
-    animal = cursor.fetchone()
-
+    data = cursor.fetchone()
     conn.close()
+    return data
 
-    return animal
 
-
-# ----------------------
+# -------------------
 # PESOS
-# ----------------------
+# -------------------
 
-def registrar_peso(animal_id,peso,fecha):
-
-    conn = get_connection()
+def registrar_peso(animal_id, peso, fecha):
+    conn = conectar()
     cursor = conn.cursor()
 
-    try:
-        cursor.execute("""
-        INSERT INTO pesos (animal_id,peso,fecha)
-        VALUES (?,?,?)
-        """,(animal_id,peso,fecha))
+    cursor.execute("""
+    INSERT INTO pesos (animal_id, peso, fecha)
+    VALUES (?,?,?)
+    """, (animal_id, peso, fecha))
 
-        conn.commit()
-
-    except Exception as e:
-        print("ERROR PESO:", e)
-
+    conn.commit()
     conn.close()
 
 
 def obtener_pesos(animal_id):
-
-    conn = get_connection()
+    conn = conectar()
     cursor = conn.cursor()
 
     cursor.execute("""
-    SELECT * FROM pesos
-    WHERE animal_id=?
-    ORDER BY fecha DESC
-    """,(animal_id,))
+    SELECT * FROM pesos WHERE animal_id=?
+    """, (animal_id,))
 
-    pesos = cursor.fetchall()
-
+    data = cursor.fetchall()
     conn.close()
-
-    return pesos
+    return data
