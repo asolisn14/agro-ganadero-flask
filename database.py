@@ -1,14 +1,22 @@
 # database.py
-# Manejo de conexión a SQLite
 
 import sqlite3
+import os
 
-DATABASE = "database/ganado.db"
+# ruta absoluta segura
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DB_FOLDER = os.path.join(BASE_DIR, "database")
+DB_PATH = os.path.join(DB_FOLDER, "ganado.db")
+
+# crear carpeta si no existe
+if not os.path.exists(DB_FOLDER):
+    os.makedirs(DB_FOLDER)
 
 
 def get_connection():
 
-    conn = sqlite3.connect(DATABASE)
+    conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
 
     return conn

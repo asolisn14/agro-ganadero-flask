@@ -1,5 +1,4 @@
 # models.py
-# Operaciones de base de datos
 
 from database import get_connection
 
@@ -53,12 +52,15 @@ def crear_usuario(username, password):
     conn = get_connection()
     cursor = conn.cursor()
 
-    cursor.execute(
-        "INSERT INTO usuarios (username,password) VALUES (?,?)",
-        (username,password)
-    )
+    try:
+        cursor.execute(
+            "INSERT INTO usuarios (username,password) VALUES (?,?)",
+            (username,password)
+        )
+        conn.commit()
+    except Exception as e:
+        print("ERROR USUARIO:", e)
 
-    conn.commit()
     conn.close()
 
 
@@ -88,12 +90,17 @@ def registrar_animal(usuario_id, identificacion, raza, fecha_nacimiento, sexo):
     conn = get_connection()
     cursor = conn.cursor()
 
-    cursor.execute("""
-    INSERT INTO animales (usuario_id,identificacion,raza,fecha_nacimiento,sexo)
-    VALUES (?,?,?,?,?)
-    """,(usuario_id,identificacion,raza,fecha_nacimiento,sexo))
+    try:
+        cursor.execute("""
+        INSERT INTO animales (usuario_id,identificacion,raza,fecha_nacimiento,sexo)
+        VALUES (?,?,?,?,?)
+        """,(usuario_id,identificacion,raza,fecha_nacimiento,sexo))
 
-    conn.commit()
+        conn.commit()
+
+    except Exception as e:
+        print("ERROR ANIMAL:", e)
+
     conn.close()
 
 
@@ -140,12 +147,17 @@ def registrar_peso(animal_id,peso,fecha):
     conn = get_connection()
     cursor = conn.cursor()
 
-    cursor.execute("""
-    INSERT INTO pesos (animal_id,peso,fecha)
-    VALUES (?,?,?)
-    """,(animal_id,peso,fecha))
+    try:
+        cursor.execute("""
+        INSERT INTO pesos (animal_id,peso,fecha)
+        VALUES (?,?,?)
+        """,(animal_id,peso,fecha))
 
-    conn.commit()
+        conn.commit()
+
+    except Exception as e:
+        print("ERROR PESO:", e)
+
     conn.close()
 
 
